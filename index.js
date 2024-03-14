@@ -2,6 +2,7 @@ const core = require('@actions/core');
 // const github = require('@actions/github');
 const { SecretsManagerClient, ListSecretsCommand, GetSecretValueCommand } = require("@aws-sdk/client-secrets-manager");
 
+let secretsPrefix = '';
 try {
     process.env.AWS_ACCESS_KEY_ID = core.getInput('aws-access-key-id');
     process.env.AWS_SECRET_ACCESS_KEY = core.getInput('aws-secret-access-key');
@@ -12,7 +13,7 @@ try {
 }
 
 try {
-    const secretsPrefix = core.getInput('secrets-prefix');
+    secretsPrefix = core.getInput('secrets-prefix');
 } catch (error) {
     core.setFailed(error.message);
     console.error(error.message);
