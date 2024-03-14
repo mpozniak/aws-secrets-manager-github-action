@@ -1,0 +1,30 @@
+name: 'Prepare Secrets List (JSON) from AWS Secrets Manager'
+description: 'Prepare a list of secrets (valueFrom) in JSON format from AWS Secrets Manager to embed in the ECS task-definition.'
+inputs:
+  aws-access-key-id:
+    description: 'AWS_ACCESS_KEY_ID'
+    required: true
+    default: ''
+  
+  aws-secret-access-key:
+    description: 'AWS_SECRET_ACCESS_KEY'
+    required: true
+    default: ''
+  
+  aws-default-region:
+    description: 'AWS_DEFAULT_REGION'
+    required: true
+    default: ''
+  
+  secrets-prefix:
+    description: 'Secrets path prefix'
+    required: true
+    default: '/'
+
+outputs:
+  json_secrets_list:
+    description: 'JSON list of secrets (valueFrom format)'
+
+runs:
+  using: 'node20'
+  main: 'index.js'
