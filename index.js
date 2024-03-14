@@ -1,5 +1,5 @@
 const core = require('@actions/core');
-const github = require('@actions/github');
+// const github = require('@actions/github');
 const { SecretsManagerClient, ListSecretsCommand, GetSecretValueCommand } = require("@aws-sdk/client-secrets-manager");
 
 try {
@@ -18,7 +18,6 @@ try {
     console.error(error.message);
 }
 
-const secretsPrefix = 'cardeo/backend/';
 const client = new SecretsManagerClient({ region: core.getInput('aws-default-region') });
 
 const getSecrets = async (secretsPrefix) => {
